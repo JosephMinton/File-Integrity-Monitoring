@@ -67,30 +67,28 @@
 <p>The project uses a modular structure that separates the PowerShell implementation, monitored test files, generated data, and documentation evidence.</p>
 
 <pre>
-PowerShell-File-Integrity-Monitor/
+PowerShell-Integrity-FIM-main/
 │
-├── README.md
 ├── Fim2.ps1
-├── Original/
-│   ├── Initial-Implementation.ps1
-│   └── Josh-Madakor-Tutorial.ps1
+├── baseline.csv
+├── fim_events.csv
+├── .gitattributes
 │
 ├── Files/
-│   ├── testfile1.txt
-│   ├── testfile2.txt
-│   └── Subfolder/
-│       └── nestedfile.txt
+│   ├── Subfolder/
+│   │   └── nested-test.txt
+│   ├── a.txt
+│   ├── b.txt
+│   ├── c.txt
+│   ├── d.txt
+│   └── e.txt
 │
-├── Screenshots/
-│   ├── 01-project-structure.png
-│   ├── 02-baseline-generation.png
-│   ├── 03-file-modification.png
-│   ├── 04-alert-deduplication.png
-│   ├── 05-recursive-monitoring.png
-│   └── 06-event-logging.png
-│
-└── .gitignore
+└── Screenshots/
+    └── ...
 </pre>
+
+<p align="center">
+  <img src="https://i.imgur.com/d8ALIKn.png" alt="">
 
 <p><strong>Generated files:</strong></p>
 
@@ -126,6 +124,8 @@ Get-FileHash -LiteralPath $FilePath -Algorithm SHA512
 Capture: PowerShell output showing successful baseline creation, number of files recorded, and sample baseline entries.
 Image: Screenshots/02-baseline-generation.png
 -->
+
+
 
 <h2>3. Baseline Import and Validation</h2>
 
@@ -168,6 +168,8 @@ Start-Sleep -Seconds $pollingInterval
 <!-- SCREENSHOT 3: FILE CREATION
 Capture: PowerShell output displaying a CREATED event after adding a new file.
 -->
+<p align="center">
+  <img src="https://i.imgur.com/icjNLwX.png" alt="Lab architecture diagram showing the host running Nessus and VMware with the Windows target VM on an isolated virtual network" width="800">
 
 <h3>4.2 File Modification Detection</h3>
 
@@ -181,6 +183,10 @@ Capture: PowerShell output displaying a CREATED event after adding a new file.
 Capture: PowerShell output displaying a MODIFIED event after changing an existing file.
 Image: Screenshots/03-file-modification.png
 -->
+
+<p align="center">
+  <img src="https://i.imgur.com/vX8JZwu.png" alt="Lab architecture diagram showing the host running Nessus and VMware with the Windows target VM on an isolated virtual network" width="800">
+
 
 <h3>4.3 File Deletion Detection</h3>
 
@@ -214,6 +220,9 @@ Get-ChildItem -LiteralPath $Path -File -Recurse -Force
 Capture: A CREATED or MODIFIED event involving a file inside Files/Subfolder.
 Image: Screenshots/05-recursive-monitoring.png
 -->
+
+<p align="center">
+  <img src="https://i.imgur.com/jU3Rc8E.png" alt="Lab architecture diagram showing the host running Nessus and VMware with the Windows target VM on an isolated virtual network" width="800">
 
 <h2>6. Alert Deduplication and Event Reporting</h2>
 
@@ -270,6 +279,8 @@ Image: Screenshots/05-recursive-monitoring.png
 Capture: fim_events.csv opened in a spreadsheet or text editor, showing timestamps, event types, file paths, and hash values.
 Image: Screenshots/06-event-logging.png
 -->
+<p align="center">
+  <img src="https://i.imgur.com/a4qvOOX.png" alt="Lab architecture diagram showing the host running Nessus and VMware with the Windows target VM on an isolated virtual network" width="800">
 
 <h2>7. Input Validation and Error Handling</h2>
 
@@ -364,6 +375,7 @@ Image: Screenshots/06-event-logging.png
 
 <p>The application identifies file integrity events but does not determine which user or process performed the operation.</p>
 
+<!--
 <h3>Potential Future Improvements</h3>
 
 <ul>
@@ -375,7 +387,7 @@ Image: Screenshots/06-event-logging.png
 <li>Introduce configurable monitoring intervals and exclusions.</li>
 <li>Expand alerting through email, SIEM, or other notification integrations.</li>
 </ul>
-
+-->
 <h2>10. Key Takeaways</h2>
 
 <ul>
@@ -386,14 +398,6 @@ Image: Screenshots/06-event-logging.png
 <li><strong>Event Reporting:</strong> Structured CSV logging creates a record of detected activity for later review.</li>
 <li><strong>Security Limitations:</strong> A monitoring tool must also protect its baseline and logs, account for monitoring gaps, and consider event attribution.</li>
 </ul>
-
-<h2>Conclusion</h2>
-
-<p>This project provided practical experience with PowerShell scripting, cryptographic hashing, file system enumeration, state comparison, error handling, and structured event logging.</p>
-
-<p>Starting with a basic file integrity monitoring implementation, the project evolved into a more modular application capable of detecting multiple file events across nested directories while maintaining a structured event history.</p>
-
-<p>The project also highlighted important considerations when designing security monitoring tools, particularly the need to protect trusted reference data, maintain reliable event records, and understand the limitations of polling-based detection.</p>
 
 <hr>
 
