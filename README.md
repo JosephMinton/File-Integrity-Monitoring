@@ -206,7 +206,7 @@ Image: Screenshots/03-file-modification.png
 
 <p>The monitoring implementation supports recursive file enumeration. Rather than examining only the top-level directory, the application searches through nested folders and includes their files in the monitoring process.</p>
 
-<p>This is implemented through <code>Get-ChildItem</code> with the <code>-Recurse</code> parameter.</p>
+<p>This is implemented through Get-ChildItem with the -Recurse parameter.</p>
 
 ```powershell
 Get-ChildItem -LiteralPath $Path -File -Recurse -Force
@@ -214,15 +214,12 @@ Get-ChildItem -LiteralPath $Path -File -Recurse -Force
 
 <p>Recursive enumeration allows the monitor to detect file activity throughout the monitored directory structure, including files located several levels below the root folder.</p>
 
-<p>For testing, a nested subfolder and sample file were created to verify that the application could identify changes outside the top-level directory.</p>
-
-<!-- SCREENSHOT 5: RECURSIVE MONITORING
-Capture: A CREATED or MODIFIED event involving a file inside Files/Subfolder.
-Image: Screenshots/05-recursive-monitoring.png
--->
+<p>For testing, a nested subfolder (Files/Subfolder) and a sample file (recursive-test.txt) were created. This verified that the application could identify file changes occurring within nested directories, rather than limiting monitoring to the top-level directory.</p>
 
 <p align="center">
-  <img src="https://i.imgur.com/jU3Rc8E.png" alt="Lab architecture diagram showing the host running Nessus and VMware with the Windows target VM on an isolated virtual network" width="800">
+  <img src="https://i.imgur.com/xUGYOmX.png" alt="" width="800">
+<p align="center">
+  <img src="https://i.imgur.com/jU3Rc8E.png" alt="" width="800">
 
 <h2>6. Alert Deduplication and Event Reporting</h2>
 
