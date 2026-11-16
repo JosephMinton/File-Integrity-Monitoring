@@ -8,6 +8,11 @@
 
 <hr>
 
+<p align="center">
+  <img src="https://i.imgur.com/P3SDlRC.png" alt="" width="900">
+
+<hr>
+
 <h2>Project Objectives</h2>
 
 <ul>
